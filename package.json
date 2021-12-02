@@ -1,0 +1,19 @@
+{
+  "name": "oooz-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.0.0",
+    "discord.js": "^13.3.1",
+    "dotenv": "^10.0.0",
+    "signale": "^1.4.0"
+  }
+}
