@@ -28,6 +28,16 @@ client.on("messageCreate", async msg => {
             .split(/\s+/);
     }
     modules.deadChat(msg, client);
+    
+     if (cmd === "ping") {
+      msg.reply("Pong!")
+    }
+  
+    if (cmd === "info") {
+      channel.send(`Bot powstał dzięki:`)
+      channel.send(`Krzysiek ツ#3885, AndrekM#1810, AXTART#5447, Info Cube#6039, olix3001#0075 i inni`)
+      channel.send(`Na razie istniej tylko funkcja ożywania czatu ale to start a i jeszcze !ping  `)
+    }
 });
 
 client.login(process.env.TOKEN)
