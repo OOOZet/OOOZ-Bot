@@ -34,9 +34,9 @@ client.on("messageCreate", async msg => {
     }
   
     if (cmd === "info") {
-      channel.send(`Bot powstał dzięki:`)
-      channel.send(`Krzysiek ツ#3885, AndrekM#1810, AXTART#5447, Info Cube#6039, olix3001#0075 i inni`)
-      channel.send(`Na razie istniej tylko funkcja ożywania czatu ale to start a i jeszcze !ping  `)
+      msg.reply(`Bot powstał dzięki:`)
+      msg.reply(`Krzysiek ツ#3885, AndrekM#1810, AXTART#5447, Info Cube#6039, olix3001#0075 i inni`)
+      msg.reply(`Na razie istniej tylko funkcja ożywania czatu ale to start a i jeszcze !ping  `)
     }
 });
 
