@@ -5,11 +5,15 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_
 const prefix = '>';
 
 const signale = require('signale');
+const { reaction } = require('./events/Suggestions');
 const Suggestions = require('./events/Suggestions');
+
+const logs = require('./logs');
 
 const modules = {
     deadChat: require('./events/message/DeadChat'),
     command: require('./events/Command'),
+    fun: require('./events/Fun'),
     suggestions: require('./events/Suggestions')
 };
 
@@ -20,6 +24,8 @@ client.on('ready', () => {
     });
 
     signale.success(`Bot logged in as ${client.user.tag}`);
+
+    logs.botReady(client);
 });
 
 client.on("messageCreate", async msg => {
@@ -29,10 +35,11 @@ client.on("messageCreate", async msg => {
             .trim()
             .substring(prefix.length)
             .split(/\s+/);
-        
+
         modules.command(msg, cmdName, ...args);
+        modules.fun(msg, cmdName, ...args);
     }
-    modules.suggestions(msg, client);
+    modules.suggestions.create(msg, client);
     modules.deadChat(msg, client);
 });
 
