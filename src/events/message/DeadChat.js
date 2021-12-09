@@ -6,7 +6,7 @@ const lastMessage = {};
 
 const deadTime = 3_600_000; // 3_600_000
 
-const ogolnyId = '915727694203867238';
+const ogolnyId = '708575435746836523';
 
 module.exports = (msg, client) => {
     // TODO: cleanup code

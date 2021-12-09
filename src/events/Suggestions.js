@@ -9,14 +9,16 @@ module.exports = async (msg, client) => {
     if(msg.channel.id == sugestieId) {
         msg.delete()
         const embed = new MessageEmbed()
-            .setColor('RANDOM')
+            .setColor('NOT_QUITE_BLACK')
             .setTitle(`Sugestia`)
             .setDescription(msg.content)
             .setThumbnail(msg.author.displayAvatarURL())
             .setFooter(`autor: ${msg.author.tag}`)
             .setTimestamp();
-        sugestie.send({ embeds: [embed] })
+        if (msg.attachments.size > 0) embed.setImage(msg.attachments.first().url)
+        await sugestie.send({ embeds: [embed] })
             .then(function (message) {
+                const sendingTime = Date.now();
                 message.react("🟩")
                 message.react("🟨")
                 message.react("🟥")
