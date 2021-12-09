@@ -21,6 +21,9 @@ module.exports = (msg, cmd, ...args) => {
         case "krzysiek":
             msg.reply("I use windows11 btw :3");
             break
+        case "stackoverflow":
+            msg.reply(`<https://stackoverflow.com/search?q=${args.join('+')}>`);
+            break
         case "randomnft":
             try {
                 (async () => {
