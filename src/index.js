@@ -59,4 +59,4 @@ client.on("messageCreate", async msg => {
     modules.deadChat(msg, client);
 });
 
-client.login("OTE2NDA2NDQzNDQ2NTA5NjA4.YapsAg.N7lPXKIfK2s3X8ZgdP3YmpGRV-c")//process.env.TOKEN)
+client.login(process.env.TOKEN)
