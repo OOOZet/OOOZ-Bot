@@ -1,5 +1,5 @@
 - [ ] Sugestie
-    - [ ] Tworzenie sugestii przez użytkownika
+    - [x] Tworzenie sugestii przez użytkownika
     - [ ] Usuwanie sugestii
     - [ ] Edytowanie sugestii
     - [ ] Oznaczanie sugestii przy "> 8 głosów" albo 48h
