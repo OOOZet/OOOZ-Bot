@@ -20,7 +20,7 @@ module.exports = (msg, client) => {
                 .setTitle(`~ ${quote.author}`)
                 .setDescription(quote.quote)
                 .setTimestamp();
-
+                
             (await client.channels.fetch(ogolnyId)).send({ embeds: [embed] });
         }, deadTime);
 

@@ -1,12 +1,9 @@
 const { MessageEmbed } = require("discord.js");
+const fs = require('fs');
 
 const beginDate = Date.now();
 
 module.exports = (msg, cmd, ...args) => {
-    if (cmd === "ping") {
-        msg.reply("Pong! `" + (Math.abs(Date.now() - msg.createdTimestamp)) + "ms`");
-    }
-
     if (cmd === "info") {
         const embed = new MessageEmbed()
             .setColor('BLURPLE')
@@ -17,10 +14,21 @@ module.exports = (msg, cmd, ...args) => {
                 Aktualne funkcje:
                 - ożywianie czatu
                 - sugestie
-                - komendy ping, info i uptime
+                - komendy ping, info, uptime i inne
             `)
             .setTimestamp();
         msg.reply({ embeds: [embed] })
+    }
+
+    if (cmd === "help") {
+        fs.readFile('help.txt', (err, data) => {
+            const embed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(`help`)
+                .setDescription(data.toString())
+                .setTimestamp();
+            msg.reply({ embeds: [embed] })
+        })
     }
 
     if (cmd === "uptime") {

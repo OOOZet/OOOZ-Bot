@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 
-const sugestieId = '918260912933204028';//'706063478586212416';
+const sugestieId = '706063478586212416';
 const sugestieRoleId = '914501173329936405';
 
 module.exports = {
@@ -26,7 +26,7 @@ module.exports = {
                     message.react("🟥")
                 });
 
-            //sugestie.send(`<@&${sugestieRoleId}> nowa sugestia!!!`);
+            sugestie.send(`<@&${sugestieRoleId}> nowa sugestia!!!`);
         }
     },
 

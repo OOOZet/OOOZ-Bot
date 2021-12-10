@@ -8,7 +8,7 @@ module.exports = {
         logChannel = await client.channels.fetch(logsChannelId);
 
         const embed = new MessageEmbed()
-            .setColor('NOT_QUITE_BLACK')
+            .setColor('GREEN')
             .setTitle(`Bot startup / Restart`)
             .setDescription("OOOZet bot is now online!")
             .setTimestamp()
