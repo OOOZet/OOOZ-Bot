@@ -3,8 +3,8 @@
     - [ ] Usuwanie sugestii
     - [ ] Edytowanie sugestii
     - [ ] Oznaczanie sugestii przy "> 8 głosów" albo 48h
-- [ ] Dzienniczek
-    - [ ] dodawanie wpisów do dzienniczka
+- [x] Dzienniczek
+    - [x] dodawanie wpisów do dzienniczka
 - [ ] Moderacja?
     - [ ] Automod
 - [ ] Web Dashboard?
