@@ -20,15 +20,28 @@ exports.run = (client, msg, args) => {
     )
     .setTimestamp()
     .setFooter('Made with brain, by ' + config.creator);
-  msg.author.send({ embeds: [donateEmbed] });
+  msg.author.send({ embeds: [donateEmbed] }).catch((e) => {
+    const donateMSG = new MessageEmbed()
+      .setColor('#6824b5')
+      .setTitle('OOOZet donate')
+      .setAuthor('OOOZet')
+      .addFields({
+        name: 'Check your dms',
+        value:
+          'Also make sure your dms are on: privacy -> allow DMs from server members',
+      })
+      .setTimestamp()
+      .setFooter('Made with brain, by ' + config.creator);
+    msg.reply({ embeds: [donateMSG] });
+    return;
+  });
   const donateMSG = new MessageEmbed()
     .setColor('#6824b5')
     .setTitle('OOOZet donate')
     .setAuthor('OOOZet')
     .addFields({
       name: 'Check your dms',
-      value:
-        'Also make sure your dms are on: privacy -> allow DMs from server members',
+      value: 'Thank for trying to support us big guy',
     })
     .setTimestamp()
     .setFooter('Made with brain, by ' + config.creator);

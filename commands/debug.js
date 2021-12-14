@@ -1,7 +1,6 @@
 exports.run = (client, msg, args) => {
   const config = require('../config.json');
-  const JSONdb = require('simple-json-db');
-  const db = new JSONdb('../db.json');
+  const db = require('../db.js');
   if (
     (msg.member.user.username === 'InfoX' &&
       msg.member.user.discriminator === '1337') ||

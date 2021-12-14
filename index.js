@@ -1,18 +1,35 @@
 const { Collection, Client, Intents } = require('discord.js');
 const config = require('./config.json');
 const fs = require('fs');
-const JSONdb = require('simple-json-db');
-const db = new JSONdb('../db.json');
+const db = require('./db.js');
 const client = new Client({
   intents: [Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILDS],
 });
 client.on('ready', () => {
+  const startupDate = Date.now();
+  db.set('startupdate', startupDate);
+  db.sync();
+  channel = client.channels.cache.get(config.log_channel);
+
+  const embed = new MessageEmbed()
+    .setColor('BLURPLE')
+    .setTitle(`Uptime`)
+    .setDescription(
+      `
+                bot went online <t:${Math.round(
+                  db.get('startupdate') / 1000
+                )}:R>
+            `
+    )
+    .setFooter(`PID ${process.pid}`)
+    .setTimestamp();
+
   console.log(`Successfully logged in as user: ${client.user.tag}`);
   if (db.get('lockdownstate')) {
     client.user.setActivity('Bot locked down', { type: 'LISTENING' });
     client.user.setStatus('idle');
   } else {
-    client.user.setActivity('Dark Souls II', { type: 'COMPETING' });
+    client.user.setActivity('Excel tournament', { type: 'COMPETING' });
     client.user.setStatus('online');
   }
 });
