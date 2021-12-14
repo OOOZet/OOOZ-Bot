@@ -13,3 +13,6 @@ pm2 start "npm start" --name OOOZet
 
 Then you can type in `pm2 logs OOOZet` to see logs from the bot
 or `pm2 kill` to stop the bot
+
+## support
+### for support, please go to our discord server
