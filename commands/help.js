@@ -14,8 +14,8 @@ exports.run = (client, msg, args) => {
   );
   const helpEmbed = new MessageEmbed()
     .setColor('#6824b5')
-    .setTitle('Quizit bot help')
-    .setAuthor('quizit bot', '', 'https://quizit.online/')
+    .setTitle('OOOZet help')
+    .setAuthor('OOOZet', '', 'https://github.com/OOOZ-community')
     .addFields(
       { name: 'q!join <giveaway_id> ', value: 'Join a giveaway' },
       {

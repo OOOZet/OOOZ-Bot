@@ -20,9 +20,12 @@ module.exports = (client, message) => {
   const command = args.shift().toLowerCase();
   if (db.get('lockdownstate')) {
     if (
-      command === 'unlock' &&
-      message.member.user.username === 'InfoX' &&
-      message.member.user.discriminator === '1337'
+      (command === 'unlock' &&
+        message.member.user.username === 'InfoX' &&
+        message.member.user.discriminator === '1337') ||
+      (command === 'unlock' &&
+        message.member.user.username === 'olix3001' &&
+        message.member.user.discriminator === '0075')
     ) {
       db.set('lockdownstate', false);
       client.user.setActivity('Dark Souls II', { type: 'COMPETING' });
@@ -30,8 +33,8 @@ module.exports = (client, message) => {
       const { MessageEmbed } = require('discord.js');
       const lockdownMSG = new MessageEmbed()
         .setColor('#28d918')
-        .setTitle('Quizit bot unlock')
-        .setAuthor('Quizit bot', '', 'https://quizit.online')
+        .setTitle('OOOZet bot unlock')
+        .setAuthor('OOOZet bot', '', 'https://github.com/OOOZ-community')
         .addFields({
           name: 'Unlock status:',
           value: 'Bot successfully unlocked!',
@@ -40,8 +43,8 @@ module.exports = (client, message) => {
         .setFooter('Made with brain, by ' + config.creator);
       const lockdownDM = new MessageEmbed()
         .setColor('#28d918')
-        .setTitle('Quizit bot unlocked!')
-        .setAuthor('Quizit bot', '', 'https://quizit.online')
+        .setTitle('OOOZet unlocked!')
+        .setAuthor('OOOZet', '', 'https://github.com/OOOZ-community')
         .addFields({
           name: 'Lockdown status:',
           value: 'Bot currently unlocked!',

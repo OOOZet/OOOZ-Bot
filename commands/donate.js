@@ -3,8 +3,8 @@ exports.run = (client, msg, args) => {
   const { MessageEmbed } = require('discord.js');
   const donateEmbed = new MessageEmbed()
     .setColor('#6824b5')
-    .setTitle('Quizit bot donate')
-    .setAuthor(config.creator, '', 'https://github.com/InfoX1337')
+    .setTitle('OOOZet donate')
+    .setAuthor(config.creator, '', 'https://github.com/OOOZ-community')
     .addFields(
       {
         name: 'Donates',
@@ -23,8 +23,8 @@ exports.run = (client, msg, args) => {
   msg.author.send({ embeds: [donateEmbed] });
   const donateMSG = new MessageEmbed()
     .setColor('#6824b5')
-    .setTitle('Quizit bot donate')
-    .setAuthor('Quizit bot', '', 'https://quizit.online')
+    .setTitle('OOOZet donate')
+    .setAuthor('OOOZet')
     .addFields({
       name: 'Check your dms',
       value:
