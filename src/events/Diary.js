@@ -4,7 +4,7 @@ const dzienniczekId = '885820716732276756';
 
 module.exports = async (client, msg, cmd, ...args) => {
     if (cmd == 'diary-help' || cmd == 'end-of-voting' || cmd == 'suggestion-making' || cmd == 'suggestion') 
-        if (msg.member.roles.cache.has('706063478451863644')) {
+        if (msg.member.roles.cache.has((role) => role.name === "Admin")) {
             switch(cmd) {
                 case 'diary-help':
                     const embed = new MessageEmbed()
