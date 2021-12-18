@@ -16,3 +16,4 @@ or `pm2 kill` to stop the bot
 
 ## support
 ### for support, please go to our discord server
+https://discord.gg/AMGxG4TvDS
