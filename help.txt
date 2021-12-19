@@ -4,15 +4,16 @@ General:
  - help
  - uptime
 Fun:
- - google <args>
+ - google <question>...
+ - guess-my-age <your-name>
+ - im-bored
  - infuś
- - lmgtfy <args>
+ - lmgtfy <question>...
  - meme
  - ping
  - randomnft
  - rick
  - spoiler
- - stackoverflow <args>
-
+ - stackoverflow <question>...
 
 
