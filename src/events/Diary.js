@@ -4,7 +4,7 @@ const dzienniczekId = '885820716732276756';
 
 module.exports = async (client, msg, cmd, ...args) => {
     if (cmd == 'diary-help' || cmd == 'end-of-voting' || cmd == 'suggestion-making' || cmd == 'suggestion') 
-        if (msg.member.roles.cache.has((role) => role.name === "Admin")) {
+        if (msg.member.roles.cache.has('706063478451863644')) {
             switch(cmd) {
                 case 'diary-help':
                     const embed = new MessageEmbed()
@@ -32,6 +32,18 @@ module.exports = async (client, msg, cmd, ...args) => {
                         const date = Math.round((now.getTime() + (now.getTimezoneOffset() * 60 * 1000)) / 1000)  
                         const replay = `**__Koniec głosowania nad sugestią__**\n**Data:** <t:${date}>\n**Link do sugestii:** ${args[0].toString()}\n**Sprawca:** ${msg.member}\n**Wynik:** ${args[1].toString()}\n**Czy przeszła?:** ${outcome}`;
                         diary.send(replay)
+                        try {
+                            (async () => {
+                                const embed = await new MessageEmbed()
+                                    .setColor('NOT_QUITE_BLACK')
+                                    .setTitle('Voting results')
+                                    .setImage(`https://quickchart.io/chart?bkg=white&c=%7B%0A%20%20%22type%22%3A%20%22outlabeledPie%22%2C%0A%20%20%22data%22%3A%20%7B%0A%20%20%20%20%22labels%22%3A%20%5B%22for%22%2C%20%22against%22%2C%20%22abstain%22%5D%2C%0A%20%20%20%20%22datasets%22%3A%20%5B%7B%0A%20%20%20%20%20%20%20%20%22backgroundColor%22%3A%20%5B%22%2313a813%22%2C%20%22%23a61212%22%2C%20%22%23dde009%22%5D%2C%0A%20%20%20%20%20%20%20%20%22data%22%3A%20%5B${results[0]}%2C%20${results[1]}%2C%20${results[2]}%5D%0A%20%20%20%20%7D%5D%0A%20%20%7D%2C%0A%20%20%22options%22%3A%20%7B%0A%20%20%20%20%22plugins%22%3A%20%7B%0A%20%20%20%20%20%20%22legend%22%3A%20false%2C%0A%20%20%20%20%20%20%22outlabels%22%3A%20%7B%0A%20%20%20%20%20%20%20%20%22text%22%3A%20%22%25l%20%25p%22%2C%0A%20%20%20%20%20%20%20%20%22color%22%3A%20%22white%22%2C%0A%20%20%20%20%20%20%20%20%22stretch%22%3A%2035%2C%0A%20%20%20%20%20%20%20%20%22font%22%3A%20%7B%0A%20%20%20%20%20%20%20%20%20%20%22resizable%22%3A%20true%2C%0A%20%20%20%20%20%20%20%20%20%20%22minSize%22%3A%2012%2C%0A%20%20%20%20%20%20%20%20%20%20%22maxSize%22%3A%2018%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D`)
+                                    .setTimestamp();
+                                diary.send({ embeds: [embed] })
+                            })();
+                        } catch (e) {
+                            msg.reply('cannot create a chart!');
+                        }
                     }
                     break
                 case 'suggestion-making':
@@ -67,6 +79,18 @@ module.exports = async (client, msg, cmd, ...args) => {
                         const date = Math.round((now.getTime() + (now.getTimezoneOffset() * 60 * 1000)) / 1000)  
                         var replay = `**__Koniec głosowania nad sugestią__**\n**Data:** <t:${date}>\n**Link do sugestii:** ${args[0].toString()}\n**Sprawca:** ${msg.member}\n**Wynik:** ${args[1].toString()}\n**Czy przeszła?:** ${outcome}`;
                         diary.send(replay)
+                        try {
+                            (async () => {
+                                const embed = await new MessageEmbed()
+                                    .setColor('NOT_QUITE_BLACK')
+                                    .setTitle('Voting results')
+                                    .setImage(`https://quickchart.io/chart?bkg=white&c=%7B%0A%20%20%22type%22%3A%20%22outlabeledPie%22%2C%0A%20%20%22data%22%3A%20%7B%0A%20%20%20%20%22labels%22%3A%20%5B%22for%22%2C%20%22against%22%2C%20%22abstain%22%5D%2C%0A%20%20%20%20%22datasets%22%3A%20%5B%7B%0A%20%20%20%20%20%20%20%20%22backgroundColor%22%3A%20%5B%22%2313a813%22%2C%20%22%23a61212%22%2C%20%22%23dde009%22%5D%2C%0A%20%20%20%20%20%20%20%20%22data%22%3A%20%5B${results[0]}%2C%20${results[1]}%2C%20${results[2]}%5D%0A%20%20%20%20%7D%5D%0A%20%20%7D%2C%0A%20%20%22options%22%3A%20%7B%0A%20%20%20%20%22plugins%22%3A%20%7B%0A%20%20%20%20%20%20%22legend%22%3A%20false%2C%0A%20%20%20%20%20%20%22outlabels%22%3A%20%7B%0A%20%20%20%20%20%20%20%20%22text%22%3A%20%22%25l%20%25p%22%2C%0A%20%20%20%20%20%20%20%20%22color%22%3A%20%22white%22%2C%0A%20%20%20%20%20%20%20%20%22stretch%22%3A%2035%2C%0A%20%20%20%20%20%20%20%20%22font%22%3A%20%7B%0A%20%20%20%20%20%20%20%20%20%20%22resizable%22%3A%20true%2C%0A%20%20%20%20%20%20%20%20%20%20%22minSize%22%3A%2012%2C%0A%20%20%20%20%20%20%20%20%20%20%22maxSize%22%3A%2018%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D`)
+                                    .setTimestamp();
+                                diary.send({ embeds: [embed] })
+                            })();
+                        } catch (e) {
+                            msg.reply('cannot create a chart!');
+                        }
     
                         var perps = []
                         for (let i=0; i<msg.mentions.members.size; i++) {
