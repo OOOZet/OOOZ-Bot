@@ -9,7 +9,7 @@ module.exports = async (client, msg, cmd, ...args) => {
     cmd == 'suggestion-making' ||
     cmd == 'suggestion'
   )
-    if (msg.member.roles.cache.has((role) => role.name === 'Admin')) {
+    if (msg.member.roles.cache.find((r) => r.name === 'Admin')) {
       switch (cmd) {
         case 'diary-help':
           const embed = new MessageEmbed()
