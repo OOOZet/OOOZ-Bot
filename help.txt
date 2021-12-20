@@ -4,12 +4,16 @@ General:
  - help
  - uptime
 Fun:
+ - crypto (btc)<cryptocurrency>
+ - fact
  - google <question>...
  - guess-my-age <your-name>
  - im-bored
  - infuś
  - lmgtfy <question>...
  - meme
+ - motivation
+ - qr <link>
  - ping
  - randomnft
  - rick
