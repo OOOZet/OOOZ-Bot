@@ -1,6 +1,7 @@
 const { MessageEmbed } = require('discord.js');
 
 const dzienniczekId = '885820716732276756';
+const sugestieId = '706063478586212416';
 
 module.exports = async (client, msg, cmd, ...args) => {
   if (
@@ -75,7 +76,19 @@ module.exports = async (client, msg, cmd, ...args) => {
                 case 'suggestion':
                     if(args.length > 1) {
                         const diary = await client.channels.fetch(dzienniczekId);
-                        const results = args[1].split("/");
+
+                        // automate process of getting suggestion results
+                        // get the message
+                        const suggestionID = args[0].split('/')[args[0].split('/').length - 1];
+                        const suggestions = await client.channels.fetch(sugestieId);
+                        const s = await suggestions.messages.fetch(suggestionID);
+                        const results = [
+                            s.reactions.cache.filter(v => v.emoji.name == '🟩').size,
+                            s.reactions.cache.filter(v => v.emoji.name == '🟨').size,
+                            s.reactions.cache.filter(v => v.emoji.name == '🟥').size,
+                        ];
+
+                        // const results = args[1].split("/");
                         var outcome
                         if (parseInt(results[0], 10) > parseInt(results[1], 10)) outcome = 'Tak'
                         else outcome = 'Nie'
