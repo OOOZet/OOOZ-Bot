@@ -77,7 +77,7 @@ module.exports = (msg, cmd, ...args) => {
                         const age = await (await axios.get(`https://api.agify.io/?name=${args[0]}`)).data;
                         const gender = await (await axios.get(`https://api.genderize.io?name=${args[0]}`)).data;
                         const nation = await (await axios.get(`https://api.nationalize.io?name=${args[0]}`)).data;
-                        msg.reply(`I think you are ${age.age} years old ${gender.gender} from ${nation.country[0].country_id}`)
+                        msg.reply(`I think you are ${age.age ? `${age.age} years old` : "not a"} ${gender.gender || "person"} from ${nation.country.length > 0 ? nation.country[0].country_id : "this universe"}`)
                     } else {
                         msg.reply('Invalid characters were used');
                     }      

@@ -44,7 +44,7 @@ module.exports = {
                 await clearCache(client, sentId)
                 const suggestions = await client.channels.fetch(sugestieId);
                 const s = await suggestions.messages.fetch(sentId);
-                const results = await [
+                const results = [
                     s.reactions.cache.get('🟩').count,
                     s.reactions.cache.get('🟥').count,
                 ];

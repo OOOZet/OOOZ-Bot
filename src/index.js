@@ -46,7 +46,7 @@ client.on('ready', () => {
 
     const fs = require('fs');
     fs.readFile('suggestionRecovery.txt', 'utf8', (err, data) => {
-        if(data.length != 0) {
+        if(data && data.length !== 0) {
             const lines = data.split('\n')
             for(let i=0; i< lines.length-1; i++) {
                 recovery.recoverSuggestion(client, lines[i].split(','))
