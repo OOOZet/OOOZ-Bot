@@ -5,6 +5,7 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_
 const prefix = process.env.PREFIX;
 
 const signale = require('signale');
+const { info } = require('signale/types');
 
 signale.config({
     displayFilename: true,
@@ -23,6 +24,7 @@ const { reaction } = require('./events/Suggestions');
 const Suggestions = require('./events/Suggestions');
 
 const logs = require('./logs');
+const recovery = require('./recovery');
 
 const modules = {
     deadChat: require('./events/message/DeadChat'),
@@ -41,6 +43,16 @@ client.on('ready', () => {
     signale.success(`Bot logged in as ${client.user.tag}`);
 
     logs.botReady(client);
+
+    const fs = require('fs');
+    fs.readFile('suggestionRecovery.txt', 'utf8', (err, data) => {
+        if(data.length != 0) {
+            const lines = data.split('\n')
+            for(let i=0; i< lines.length-1; i++) {
+                recovery.recoverSuggestion(client, lines[i].split(','))
+            }
+        }
+    })
 });
 
 client.on("messageCreate", async msg => {
@@ -60,3 +72,4 @@ client.on("messageCreate", async msg => {
 });
 
 client.login(process.env.TOKEN)
+

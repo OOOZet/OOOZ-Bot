@@ -33,9 +33,9 @@ module.exports = async (client, msg, cmd, ...args) => {
                 const suggestions = await client.channels.fetch(sugestieId);
                 const s = await suggestions.messages.fetch(suggestionID);
                 const results = [
-                    s.reactions.cache.get('🟩').count,
-                    s.reactions.cache.get('🟥').count,
-                    s.reactions.cache.get('🟨').count,
+                    s.reactions.cache.get('🟩').count-1,
+                    s.reactions.cache.get('🟥').count-1,
+                    s.reactions.cache.get('🟨').count-1,
                 ];
                 const votes = results.join('/') 
                 var outcome;

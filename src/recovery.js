@@ -1,66 +1,34 @@
 const { MessageEmbed } = require("discord.js");
-const { await } = require("signale/types");
 
 const sugestieId = '706063478586212416';
-const sugestieRoleId = '914501173329936405';
 const dzienniczekId = '885820716732276756';
 
 module.exports = {
-    create: async (msg, client) => {
-        const sugestie = await client.channels.fetch(sugestieId);
-
-        if (msg.channel.id == sugestieId) {
-            msg.delete()
-            const embed = new MessageEmbed()
-                .setColor('NOT_QUITE_BLACK')
-                .setTitle(`Sugestia`)
-                .setDescription(msg.content)
-                .setThumbnail(msg.author.displayAvatarURL())
-                .setFooter(`autor: ${msg.author.tag}`)
-                .setTimestamp();
-            if (msg.attachments.size > 0) embed.setImage(msg.attachments.first().url)
-
-            var sentId, sentUrl
-            await sugestie.send({ embeds: [embed] })
-                .then(async function (message) {
-                    sentId = message.id
-                    sentUrl = message.url
-                    message.react("🟩")
-                    message.react("🟨")
-                    message.react("🟥")
-                    sugestie.send(`<@&${sugestieRoleId}> nowa sugestia!!!`);
-                });
-
-            const sendingTime = Date.now();
-            const fs = require('fs');
-            fs.readFile('suggestionRecovery.txt', 'utf8', (err, data) => {
-                if(data.length == 0) data = `${sentId},${sentUrl},${sendingTime}\n`
-                else data = `${data}${sentId},${sentUrl},${sendingTime}\n`
-                fs.writeFile('suggestionRecovery.txt', data, 'utf8', (err) => {});
-            })
-
-            while(Math.abs(sendingTime - Date.now())/(1000*60) < 1440) {
-                await sleep(1000*6);
-                await clearCache(client, sentId)
-                const suggestions = await client.channels.fetch(sugestieId);
-                const s = await suggestions.messages.fetch(sentId);
-                const results = await [
-                    s.reactions.cache.get('🟩').count,
-                    s.reactions.cache.get('🟥').count,
-                ];
-                if (Math.abs(parseInt(results[0], 10) - parseInt(results[1], 10)) >= 1) break
-            }
-
-            await endOfVoting(client, sentUrl, sentId)
-            args = [sentId, sentUrl, sendingTime];
-            fs.readFile('suggestionRecovery.txt', 'utf8', (err, data) => {
-                if(data.length != 0) {
-                    data = data.replace(`${args.join(',')}\n`, '');
-                    fs.writeFile('suggestionRecovery.txt', data, 'utf8', (err) => {});
-                }
-            })
+    async recoverSuggestion(client, args) {
+        const sentId = args[0]
+        const sentUrl = args[1]
+        const sendingTime = args[2]
+        while(Math.abs(sendingTime - Date.now())/(1000*60) < 1440) {
+            await sleep(1000*6);
+            await clearCache(client, sentId)
+            const suggestions = await client.channels.fetch(sugestieId);
+            const s = await suggestions.messages.fetch(sentId);
+            const results = await [
+                s.reactions.cache.get('🟩').count,
+                s.reactions.cache.get('🟥').count,
+            ];
+            if (Math.abs(parseInt(results[0], 10) - parseInt(results[1], 10)) >= 1) break
         }
-    },
+
+        await endOfVoting(client, sentUrl, sentId)
+        const fs = require('fs');
+        fs.readFile('suggestionRecovery.txt', 'utf8', (err, data) => {
+            if(data.length != 0) {
+                data = data.replace(`${args.join(',')}\n`, '');
+                fs.writeFile('suggestionRecovery.txt', data, 'utf8', (err) => {});
+            }
+        })
+    }
 }
 
 function sleep(ms) {
