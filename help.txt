@@ -7,7 +7,7 @@ Fun:
  - crypto (btc)<cryptocurrency>
  - fact
  - google <question>...
- - guess-my-age <your-name>
+ - guess-me <your-name>
  - im-bored
  - infuś
  - lmgtfy <question>...
