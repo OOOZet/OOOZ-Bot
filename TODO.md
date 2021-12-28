@@ -2,7 +2,7 @@
     - [x] Tworzenie sugestii przez użytkownika
     - [ ] Usuwanie sugestii
     - [ ] Edytowanie sugestii
-    - [ ] Oznaczanie sugestii przy "> 8 głosów" albo 48h
+    - [x] Oznaczanie sugestii przy "> 8 głosów" albo 48h
 - [x] Dzienniczek
     - [x] dodawanie wpisów do dzienniczka
 - [ ] Moderacja?
