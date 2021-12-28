@@ -40,7 +40,7 @@ module.exports = {
             })
 
             while(Math.abs(sendingTime - Date.now())/(1000*60) < 1440) {
-                await sleep(1000*6);
+                await sleep(1000*60);
                 await clearCache(client, sentId)
                 const suggestions = await client.channels.fetch(sugestieId);
                 const s = await suggestions.messages.fetch(sentId);
@@ -48,7 +48,7 @@ module.exports = {
                     s.reactions.cache.get('🟩').count,
                     s.reactions.cache.get('🟥').count,
                 ];
-                if (Math.abs(parseInt(results[0], 10) - parseInt(results[1], 10)) >= 1) break
+                if (Math.abs(parseInt(results[0], 10) - parseInt(results[1], 10)) >= 9) break
             }
 
             await endOfVoting(client, sentUrl, sentId)
