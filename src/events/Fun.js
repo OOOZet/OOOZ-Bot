@@ -28,6 +28,9 @@ module.exports = (msg, cmd, ...args) => {
         case "infuś":
             msg.reply("https://www.youtube.com/c/InfoCube");
             break
+        case "amogus":
+            msg.reply("https://tenor.com/view/amongus-datass-gif-22550225");
+            break
         case "rick":
             msg.reply("<https://www.youtube.com/watch?v=dQw4w9WgXcQ>");
             break
