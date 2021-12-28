@@ -14,11 +14,11 @@ module.exports = (msg, client) => {
         if (lastMessage[ogolnyId]) clearTimeout(lastMessage[ogolnyId]);
         lastMessage[ogolnyId] = setTimeout(async () => {
             signale.info('reviving chat "ogolny"');
-            let quote = (await axios.get('http://quotes.stormconsultancy.co.uk/random.json')).data;
+            let quote = (await axios.get('https://programming-quotes-api.herokuapp.com/Quotes/random')).data;
             const embed = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle(`~ ${quote.author}`)
-                .setDescription(quote.quote)
+                .setDescription(quote.en)
                 .setTimestamp();
                 
             (await client.channels.fetch(ogolnyId)).send({ embeds: [embed] });
