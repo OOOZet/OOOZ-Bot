@@ -31,7 +31,8 @@ const modules = {
     command: require('./events/Command'),
     fun: require('./events/Fun'),
     suggestions: require('./events/Suggestions'),
-    diary: require('./events/Diary')
+    diary: require('./events/Diary'),
+    moderation: require('./events/Moderation'),
 };
 
 client.on('ready', () => {
@@ -46,9 +47,9 @@ client.on('ready', () => {
 
     const fs = require('fs');
     fs.readFile('suggestionRecovery.txt', 'utf8', (err, data) => {
-        if(data && data.length !== 0) {
+        if (data && data.length !== 0) {
             const lines = data.split('\n')
-            for(let i=0; i< lines.length-1; i++) {
+            for (let i = 0; i < lines.length - 1; i++) {
                 recovery.recoverSuggestion(client, lines[i].split(','))
             }
         }
@@ -66,6 +67,7 @@ client.on("messageCreate", async msg => {
         modules.command(msg, cmdName, ...args);
         modules.fun(msg, cmdName, ...args);
         modules.diary(client, msg, cmdName, ...args);
+        //modules.moderation(client, msg, cmdName, ...args);
     }
     modules.suggestions.create(msg, client);
     modules.deadChat(msg, client);
