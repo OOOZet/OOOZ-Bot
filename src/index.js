@@ -65,10 +65,10 @@ client.on("messageCreate", async msg => {
 
         modules.command(msg, cmdName, ...args);
         modules.fun(msg, cmdName, ...args);
-        modules.diary(client, msg, cmdName, ...args);
+        /*/modules.diary(client, msg, cmdName, ...args);/*/
     }
-    modules.suggestions.create(msg, client);
-    modules.deadChat(msg, client);
+    /*/modules.suggestions.create(msg, client);/*/
+    /*/modules.deadChat(msg, client);/*/
 });
 
 client.login(process.env.TOKEN)

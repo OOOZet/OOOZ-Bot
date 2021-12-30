@@ -1,9 +1,3 @@
-const { default: axios } = require("axios");
-const { MessageEmbed } = require("discord.js");
-const { await } = require("signale/types");
-
-module.exports = (msg, cmd, ...args) => {
-    switch (cmd) {
         case "meme":
             try {
                 (async () => {
@@ -25,11 +19,14 @@ module.exports = (msg, cmd, ...args) => {
         case "lmgtfy":
             msg.reply(`<https://lmgtfy.app/?q=${args.join('+')}>`);
             break
+        case "my-ip":
+            msg.reply(`127.0.0.1`);
+            break
         case "infuś":
             msg.reply("https://www.youtube.com/c/InfoCube");
             break
         case "amogus":
-            msg.reply("https://tenor.com/view/amongus-datass-gif-22550225");
+            msg.reply("https://tenor.com/view/amongus-datass-gif-22550225"); /*/ amogus /*/
             break
         case "rick":
             msg.reply("<https://www.youtube.com/watch?v=dQw4w9WgXcQ>");
