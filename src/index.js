@@ -31,6 +31,7 @@ const modules = {
     command: require('./events/Command'),
     fun: require('./events/Fun'),
     suggestions: require('./events/Suggestions'),
+    botSuggestions: require('./events/BotSuggestions'),
     diary: require('./events/Diary'),
     moderation: require('./events/Moderation'),
 };
@@ -70,6 +71,7 @@ client.on("messageCreate", async msg => {
         //modules.moderation(client, msg, cmdName, ...args);
     }
     modules.suggestions.create(msg, client);
+    modules.botSuggestions.create(msg, client);
     modules.deadChat(msg, client);
 });
 
