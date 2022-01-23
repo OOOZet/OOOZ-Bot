@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 
-const sugestieId = '706063478586212416';
-const dzienniczekId = '885820716732276756';
+const sugestieId = process.env.SUGESTIE_ID;
+const dzienniczekId = process.env.DIARY_ID;
 
 module.exports = {
     async recoverSuggestion(client, args) {

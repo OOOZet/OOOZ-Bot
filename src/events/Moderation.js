@@ -3,8 +3,8 @@ var client = null;
 
 // TODO: Change these id's!
 
-const adminRole = '831060080233021450'
-const mutedRole = '709122357142224897'
+const adminRole = process.env.ADMIN_ROLE_ID;
+const mutedRole = process.env.MUTE_ROLE_ID;
 
 // [everyone, uczen]
 //const rolesToChange = ['706063478292480021', '725627767378542604']

@@ -1,8 +1,8 @@
 const { MessageEmbed } = require("discord.js");
 const { await } = require("signale/types");
 
-const sugestieBotId = '927267262929440818';
-const botDeveloperRoleId = '915726874989199410';
+const sugestieBotId = process.env.SUGESTIE_BOT_ID;
+const botDeveloperRoleId = process.env.BOTDEV_ROLE_ID;
 
 module.exports = {
     create: async (msg, client) => {

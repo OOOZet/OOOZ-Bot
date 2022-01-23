@@ -1,7 +1,7 @@
 const { MessageEmbed } = require('discord.js');
 const fs = require('fs');
 
-const logsId = '708581344518733925';
+const logsId = process.env.LOGS_ID;
 
 module.exports = async (client, msg) => {
     

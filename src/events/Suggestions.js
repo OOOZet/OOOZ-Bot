@@ -1,9 +1,9 @@
 const { MessageEmbed } = require("discord.js");
 const { await } = require("signale/types");
 
-const sugestieId = '706063478586212416';
-const sugestieRoleId = '914501173329936405';
-const dzienniczekId = '885820716732276756';
+const sugestieId = process.env.SUGESTIE_ID;
+const sugestieRoleId = process.env.SUGESTIE_ROLE_ID;
+const dzienniczekId = process.env.DIARY_ID;
 
 module.exports = {
     create: async (msg, client) => {

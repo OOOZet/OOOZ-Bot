@@ -1,7 +1,7 @@
 const { MessageEmbed } = require('discord.js');
 
-const dzienniczekId = '885820716732276756';
-const sugestieId = '706063478586212416';
+const dzienniczekId = process.env.DIARY_ID;
+const sugestieId = process.env.SUGESTIE_ID;
 
 module.exports = async (client, msg, cmd, ...args) => {
   if (

@@ -1,11 +1,11 @@
 const { MessageEmbed } = require("discord.js");
 
-const logsChannelId = '918512478701383681';
+const botLogsChannelId = process.env.BOT_LOGS_ID;
 var logChannel = null;
 
 module.exports = {
     async botReady(client) {
-        logChannel = await client.channels.fetch(logsChannelId);
+        logChannel = await client.channels.fetch(botLogsChannelId);
 
         const embed = new MessageEmbed()
             .setColor('GREEN')
