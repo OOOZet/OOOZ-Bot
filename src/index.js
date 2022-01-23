@@ -34,6 +34,7 @@ const modules = {
     botSuggestions: require('./events/BotSuggestions'),
     diary: require('./events/Diary'),
     moderation: require('./events/Moderation'),
+    scam: require('./events/Scam'),
 };
 
 client.on('ready', () => {
@@ -58,7 +59,7 @@ client.on('ready', () => {
 });
 
 client.on("messageCreate", async msg => {
-    if (msg.author.bot) return;
+    if (msg.author.bot || modules.scam(client, msg)) return;
     if (msg.content.startsWith(prefix)) {
         const [cmdName, ...args] = msg.content
             .trim()
