@@ -19,15 +19,19 @@ module.exports = async (client, msg) => {
 };
 
 async function deleteScam(client, msg) {
-    msg.delete();
-    var logs = await client.channels.fetch(logsId);
-    const embed = new MessageEmbed()
+    try {
+        msg.delete();
+        var logs = await client.channels.fetch(logsId);
+        const embed = new MessageEmbed()
         .setColor('RED')
         .setTitle(`USUNIĘTO SCAM`)
         .setDescription(msg.content)
         .setThumbnail(msg.author.displayAvatarURL())
         .setFooter(`scammer: ${msg.author.tag}`)
         .setTimestamp();
-    await logs.send({ embeds: [embed] });
+        await logs.send({ embeds: [embed] });
+    } catch(e) {
+        msg.channels.send("Something went wrong...");
+    }
     return true;
 }
