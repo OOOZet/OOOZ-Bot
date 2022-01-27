@@ -59,7 +59,7 @@ client.on('ready', () => {
 });
 
 client.on("messageCreate", async msg => {
-    if (msg.author.bot || modules.scam(client, msg)) return;
+    if (msg.author.bot /*|| modules.scam(client, msg) - not working right now*/) return;
     if (msg.content.startsWith(prefix)) {
         const [cmdName, ...args] = msg.content
             .trim()
