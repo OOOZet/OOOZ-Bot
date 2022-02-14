@@ -35,6 +35,7 @@ const modules = {
     diary: require('./events/Diary'),
     moderation: require('./events/Moderation'),
     scam: require('./events/Scam'),
+    counting: require('./events/message/Counting')
 };
 
 client.on('ready', () => {
@@ -74,7 +75,8 @@ client.on("messageCreate", async msg => {
     modules.suggestions.create(msg, client);
     modules.botSuggestions.create(msg, client);
     modules.deadChat(msg, client);
+    modules.counting(msg, client);
 });
 
-client.login(process.env.TOKEN)
+client.login(process.env.TOKEN);
 

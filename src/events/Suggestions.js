@@ -10,7 +10,7 @@ module.exports = {
         const sugestie = await client.channels.fetch(sugestieId);
 
         if (msg.channel.id == sugestieId) {
-            msg.delete()
+            msg.delete();
             const embed = new MessageEmbed()
                 .setColor('NOT_QUITE_BLACK')
                 .setTitle(`Sugestia`)
