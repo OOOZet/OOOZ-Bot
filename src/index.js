@@ -21,8 +21,6 @@ signale.config({
 
 
 const { reaction } = require('./events/Suggestions');
-const Suggestions = require('./events/Suggestions');
-
 const logs = require('./logs');
 const recovery = require('./recovery');
 
@@ -35,7 +33,7 @@ const modules = {
     diary: require('./events/Diary'),
     moderation: require('./events/Moderation'),
     scam: require('./events/Scam'),
-    counting: require('./events/message/Counting')
+    counting: require('./events/message/Counting'),
 };
 
 client.on('ready', () => {
@@ -67,13 +65,13 @@ client.on("messageCreate", async msg => {
             .substring(prefix.length)
             .split(/\s+/);
 
-        modules.command(msg, cmdName, ...args);
+        modules.command(client, msg, cmdName, ...args);
         modules.fun(msg, cmdName, ...args);
         modules.diary(client, msg, cmdName, ...args);
         //modules.moderation(client, msg, cmdName, ...args);
     }
-    modules.suggestions.create(msg, client);
-    modules.botSuggestions.create(msg, client);
+    //modules.suggestions.create(msg, client);
+    //modules.botSuggestions.create(msg, client);
     modules.deadChat(msg, client);
     modules.counting(msg, client);
 });
