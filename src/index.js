@@ -70,8 +70,8 @@ client.on("messageCreate", async msg => {
         modules.diary(client, msg, cmdName, ...args);
         //modules.moderation(client, msg, cmdName, ...args);
     }
-    //modules.suggestions.create(msg, client);
-    //modules.botSuggestions.create(msg, client);
+    modules.suggestions.create(msg, client);
+    modules.botSuggestions.create(msg, client);
     modules.deadChat(msg, client);
     modules.counting(msg, client);
 });
