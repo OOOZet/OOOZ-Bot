@@ -34,6 +34,7 @@ const modules = {
     moderation: require('./events/Moderation'),
     scam: require('./events/Scam'),
     counting: require('./events/message/Counting'),
+    quotes: require('./events/quotes')
 };
 
 client.on('ready', () => {
@@ -55,6 +56,8 @@ client.on('ready', () => {
             }
         }
     })
+    modules.quotes(client);
+    modules.counting.init(client);
 });
 
 client.on("messageCreate", async msg => {
@@ -70,10 +73,10 @@ client.on("messageCreate", async msg => {
         modules.diary(client, msg, cmdName, ...args);
         //modules.moderation(client, msg, cmdName, ...args);
     }
-    //modules.suggestions.create(msg, client);
-    //modules.botSuggestions.create(msg, client);
-    modules.deadChat(msg, client);
-    modules.counting(msg, client);
+    modules.suggestions.create(msg, client);
+    modules.botSuggestions.create(msg, client);
+    //modules.deadChat(msg, client); - turned off
+    modules.counting.msg(msg);
 });
 
 client.login(process.env.TOKEN);
