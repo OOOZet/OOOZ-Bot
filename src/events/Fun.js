@@ -20,7 +20,7 @@ module.exports = (msg, cmd, ...args) => {
             }
             break
         case "google":
-            msg.reply(`<https://letmegooglethat.com/?q=${args.join('+')}>`);
+            msg.reply(`<https://lmddgtfy.net/?q=${args.join('+')}>`);
             break
         case "lmgtfy":
             msg.reply(`<https://lmgtfy.app/?q=${args.join('+')}>`);
