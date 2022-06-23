@@ -22,6 +22,9 @@ module.exports = (msg, cmd, ...args) => {
         case "google":
             msg.reply(`<https://letmegooglethat.com/?q=${args.join('+')}>`);
             break
+        case "ddg":
+            msg.reply(`<https://lmddgtfy.net/?q=${args.join('+')}>`);
+            break
         case "lmgtfy":
             msg.reply(`<https://lmgtfy.app/?q=${args.join('+')}>`);
             break
