@@ -3,6 +3,7 @@ require('dotenv').config();
 const { Client, Intents } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 const prefix = process.env.PREFIX;
+const CountingChannelId = process.env.LICZENIE_ID;
 
 const signale = require('signale');
 const { info } = require('signale/types');
@@ -61,7 +62,7 @@ client.on('ready', () => {
 });
 
 client.on("messageCreate", async msg => {
-    if (msg.author.bot /*|| modules.scam(client, msg) - not working right now*/) return;
+    if (msg.author.bot && msg.channel.id != CountingChannelId/*|| modules.scam(client, msg) - not working right now*/) return;
     if (msg.content.startsWith(prefix)) {
         const [cmdName, ...args] = msg.content
             .trim()
